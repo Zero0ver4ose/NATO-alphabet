@@ -27,9 +27,16 @@ create_dict = {value.letter:value.code for key,value in data_csv.iterrows() }
 
 print(create_dict)
 
+def generate_phonetic():
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
-word = input("Enter a word: ").upper()
-output_list = [create_dict[letter] for letter in word]
+    word = input("Enter a word: ").upper()
+    try:
+        output_list = [create_dict[letter] for letter in word]
+    except KeyError:
+        print("Please insert only letters.")
+        generate_phonetic()
+    else:
+        print(output_list)
 
-print(output_list)
+generate_phonetic()
 
